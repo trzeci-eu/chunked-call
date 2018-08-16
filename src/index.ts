@@ -55,13 +55,17 @@ export function setChunkedCall(task: IChunkedCallTask, callback?: IChunkedCallCa
 
 export function setChunkedCallPromise(task: IChunkedCallTask, limitMs = 16): Promise<void> {
 	return new Promise((resolve, reject) => {
-		setChunkedCall(task, (err?: string) => {
-			if (err) {
-				reject(err);
-			} else {
-				resolve();
-			}
-		}, limitMs);
+		setChunkedCall(
+			task,
+			(err?: string) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve();
+				}
+			},
+			limitMs,
+		);
 	});
 }
 
