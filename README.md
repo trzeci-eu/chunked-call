@@ -1,4 +1,6 @@
 # chunked-call
+[![NPM version](https://img.shields.io/npm/v/chunked-call.svg)](https://www.npmjs.com/package/chunked-call)
+
 This package helps you split blocking - time consuming operations to chunks that are executed in an asynchronous manner.
 The package was inspired long time ago, by a [StackOverflow Question](https://stackoverflow.com/questions/44669648/asynchronous-callback-javascript-with-complex-calculation) and main usage should be for systems where multi-threading operations are not available. 
 
@@ -32,8 +34,14 @@ function setChunkedCallPromise(task: IChunkedCallTask, limitMs?: number): Promis
 function killChunkedCall(id: number): boolean;
 ```
 
-### How to implement chunked-call? 
-#### Loop `for`
+### How to implement chunked-call?
+#### Import required functions
+```js
+let setChunkedCall = require("chunked-call").setChunkedCall;
+let killChunkedCall = require("chunked-call").killChunkedCall;
+```
+
+#### Case: Loop `for`
 ```js
 // original code:
 for (let i = 0; i < array.length; i++) {
@@ -55,7 +63,7 @@ setChunkedCall(
 );
 ```
 
-#### Loop `while`
+#### Case: Loop `while`
 ```js
 // original code:
 while (array.length) {
@@ -75,7 +83,7 @@ setChunkedCall(
 );
 ```
 
-#### Loop `do-while`
+#### Case: Loop `do-while`
 ```js
 // original code:
 do {
@@ -96,4 +104,4 @@ setChunkedCall(
 ```
 
 ## License
-MIT
+[MIT](LICENSE)
