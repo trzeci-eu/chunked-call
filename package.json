@@ -2,13 +2,18 @@
   "name": "chunked-call",
   "version": "0.0.2",
   "description": "Split blocking execution to small chunks.",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
     "publish": "npm publish"
   },
   "repository": {
@@ -19,6 +24,7 @@
     "typescript",
     "chunks",
     "chunked",
+    "async",
     "execution"
   ],
   "author": "Piotr Paczkowski <kontakt@trzeci.eu>",
