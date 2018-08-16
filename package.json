@@ -2,8 +2,8 @@
   "name": "chunked-call",
   "version": "0.0.2",
   "description": "Split blocking execution to small chunks.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
