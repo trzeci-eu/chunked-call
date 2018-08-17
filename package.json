@@ -1,6 +1,6 @@
 {
   "name": "chunked-call",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Split blocking execution to small chunks.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
