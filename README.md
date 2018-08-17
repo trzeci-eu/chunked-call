@@ -1,5 +1,5 @@
 # chunked-call
-[![NPM version](https://img.shields.io/npm/v/chunked-call.svg)](https://www.npmjs.com/package/chunked-call)
+[![NPM version](https://img.shields.io/npm/v/chunked-call.svg)](https://www.npmjs.com/package/chunked-call) [![Build Status](https://travis-ci.org/trzecieu/chunked-call.svg?branch=master)](https://travis-ci.org/trzecieu/chunked-call)
 
 This package helps you split blocking - time consuming operations to chunks that are executed in an asynchronous manner.
 The package was inspired long time ago, by a [StackOverflow Question](https://stackoverflow.com/questions/44669648/asynchronous-callback-javascript-with-complex-calculation) and main usage should be for systems where multi-threading operations are not available. 

@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trzeci-eu/chunked-call.git"
+    "url": "git+https://github.com/trzecieu/chunked-call.git"
   },
   "keywords": [
     "typescript",
@@ -29,9 +29,9 @@
   "author": "Piotr Paczkowski <kontakt@trzeci.eu>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trzeci-eu/chunked-call/issues"
+    "url": "https://github.com/trzecieu/chunked-call/issues"
   },
-  "homepage": "https://github.com/trzeci-eu/chunked-call#readme",
+  "homepage": "https://github.com/trzecieu/chunked-call#readme",
   "devDependencies": {
     "@types/jest": "^23.3.1",
     "jest": "^23.5.0",
