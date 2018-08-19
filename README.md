@@ -77,7 +77,7 @@ setChunkedCall(
         if (array.length) {
             doSomeOperation(array.pop());
         }
-        return array.length > 0;
+        return array.length;
     }, 
     () => nextStep()
 );

@@ -3,7 +3,7 @@ import { setChunkedCallPromise } from '../src/index';
 
 describe('Main Suit Case', () => {
 	test('Test simple task', done => {
-		setChunkedCall(() => false, err => done());
+		setChunkedCall(() => false, () => done());
 	});
 
 	test('Test simple task as Promise', done => {
@@ -52,5 +52,29 @@ describe('Main Suit Case', () => {
 		const h1 = setChunkedCall(() => false);
 		const h2 = setChunkedCall(() => false);
 		expect(h1).not.toEqual(h2);
+	});
+
+	test('Setting limit to 0 ms should still execute at lease once a frame', done => {
+		setChunkedCallPromise(() => {
+			return false;
+		}, 0).then(done);
+	});
+
+	test('Operation takes longer than budget', done => {
+		const start = Date.now();
+		const budget = 12;
+		setChunkedCall(
+			() => {
+				return Date.now() - start < budget * 2;
+			},
+			() => {
+				if (Date.now() - start > budget) {
+					done();
+				} else {
+					done('Expected to finish after budget');
+				}
+			},
+			budget,
+		);
 	});
 });
