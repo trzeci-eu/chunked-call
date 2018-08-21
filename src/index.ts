@@ -27,7 +27,7 @@ export function setChunkedCall(task: IChunkedCallTask, callback?: IChunkedCallCa
 	handlersMap[ctx.id] = ctx;
 
 	const schedule = () => {
-		ctx.handler = setImmediate(() => {
+		ctx.handler = setTimeout(() => {
 			const start = Date.now();
 			let proceed = true;
 
@@ -39,7 +39,7 @@ export function setChunkedCall(task: IChunkedCallTask, callback?: IChunkedCallCa
 			} while (Date.now() - start <= limitMs && proceed);
 
 			if (!proceed) {
-				clearImmediate(ctx.handler);
+				clearTimeout(ctx.handler);
 				delete handlersMap[ctx.id];
 				if (callback) {
 					callback();
@@ -62,7 +62,7 @@ export function setChunkedCallPromise(task: IChunkedCallTask, limitMs = 16): Pro
 export function killChunkedCall(id: number): boolean {
 	if (id in handlersMap) {
 		handlersMap[id].alive = false;
-		clearImmediate(handlersMap[id].handler);
+		clearTimeout(handlersMap[id].handler);
 		delete handlersMap[id];
 		return true;
 	}
