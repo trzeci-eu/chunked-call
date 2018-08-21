@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/trzecieu/chunked-call/issues"
   },
-  "homepage": "https://github.com/trzecieu/chunked-call#readme",
+  "homepage": "https://trzecieu.github.io/chunked-call/",
   "devDependencies": {
     "@types/jest": "^23.3.1",
     "jest": "^23.5.0",
