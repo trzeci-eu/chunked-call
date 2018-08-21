@@ -36,7 +36,7 @@ function executeChunkedBuckets(done) {
     setChunkedCall((() => {
             var i = 0;
             return () => {
-                var limit = Math.min(i + 100, size);
+                var limit = Math.min(i + 60, size);
                 for (; i < limit; i++) {
                     result[i] = i * i;
                 }
