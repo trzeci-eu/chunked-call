@@ -5,7 +5,7 @@ This package helps you split blocking - time consuming operations to chunks that
 The package was inspired long time ago, by a [StackOverflow Question](https://stackoverflow.com/questions/44669648/asynchronous-callback-javascript-with-complex-calculation) and main usage should be for systems where multi-threading operations are not available. 
 
 ## Demo
-Please visit [demo](https://trzeci-eu.github.io/chunked-call/) page to see examples.
+Please visit [demo](https://trzecieu.github.io/chunked-call/) page to see examples.
 
 ## Usage
 ### Installation
@@ -16,7 +16,7 @@ Package is available on npm repository: `npm i chunked-call -D`
 // Callback to execution code
 declare type IChunkedCallTask = () => boolean;
 // Callback on finishing execution
-declare type IChunkedCallCallback = (error?: string) => void;
+declare type IChunkedCallCallback = () => void;
 
 // Starts Chunked Call
 // @task: callback to function that executes until it returns false. 
@@ -103,5 +103,14 @@ setChunkedCall(
 );
 ```
 
+## Changelog
+- `1.0.0` - Version uses `setTimeout` and `claerTimeout` to schedule next execution
+- `0.0.6` - Added Travis CI
+- `0.0.5` - Updated documentation
+- `0.0.4` - Improve test coverage
+- `0.0.3` - Updated documentation
+- `0.0.2` - First release
+
 ## License
 [MIT](LICENSE)
+
