@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+    
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/skeleton.css" rel="stylesheet" />
+    <link href="css/prism.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <title>Demo: chunked-call</title>
+</head>
+
+<body>
+    <div id="demo-grid">
+
+        <div id="demo-animation">
+            <div>JS / UI</div>
+        </div>
+        <div id="demo-header">
+            <h3><a href="https://www.npmjs.com/package/chunked-call">chunked-call</a></h3>
+            <p>Small library what let's you to split blocking loop operations over chunks, so that you can keep UI responsive.
+                <br/>Please try to execute the same code in different way and <strong>observe animation above</strong>.
+            </p>
+        </div>
+
+        <div class="demo-case" id="demo-sync">
+            <pre><code class="language-js"></code></pre>
+            <div class="demo-button-container">
+                <p></p>
+                <button class="button-primary">Execute traditional</button>
+            </div>
+        </div>
+
+        <div class="demo-case" id="demo-async">
+            <pre><code class="language-js"></code></pre>
+            <div class="demo-button-container">
+                <p></p>
+                <button class="button-primary">Execute Chunked</button>
+            </div>
+            
+        </div>
+
+        <div class="demo-case" id="demo-async-buckets">
+            <pre><code class="language-js"></code></pre>
+            <div class="demo-button-container">
+                <p></p>
+                <button class="button-primary">Execute Chunked</button>
+            </div>
+        </div>
+    </div>
+    <footer>Crated by <a href="https://github.com/trzecieu/">@trzecieu</a>. Source: <a href="https://github.com/trzecieu/chunked-call/tree/gh-pages">@GitHub</a></footer>
+    <script src="js/bundle.js"></script>
+    <script src="js/prism.js"></script>
+</body>
+
+</html>
