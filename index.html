@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
-    
+
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/skeleton.css" rel="stylesheet" />
     <link href="css/prism.css" rel="stylesheet" />
@@ -15,43 +16,96 @@
 
 <body>
     <div id="demo-grid">
+        <header>
+            <div id="demo-animation">
+                <div>JS / UI</div>
+            </div>
+            <div id="demo-header">
+                <h3>
+                    <a href="https://www.npmjs.com/package/chunked-call">chunked-call</a>
+                </h3>
+                <p>A small library what let's you to split blocking loop operations over chunks, so that you can keep UI responsive.
+                    <br/>Please try to execute the same code in different way and
+                    <strong>observe animation above</strong>.
+                </p>
+            </div>
+        </header>
 
-        <div id="demo-animation">
-            <div>JS / UI</div>
-        </div>
-        <div id="demo-header">
-            <h3><a href="https://www.npmjs.com/package/chunked-call">chunked-call</a></h3>
-            <p>Small library what let's you to split blocking loop operations over chunks, so that you can keep UI responsive.
-                <br/>Please try to execute the same code in different way and <strong>observe animation above</strong>.
-            </p>
-        </div>
 
         <div class="demo-case" id="demo-sync">
-            <pre><code class="language-js"></code></pre>
-            <div class="demo-button-container">
-                <p></p>
-                <button class="button-primary">Execute traditional</button>
+            <div>
+                <pre><code class="language-js"></code></pre>
+                <div class="demo-button-container">
+                    <p></p>
+                    <button class="button-primary">Execute</button>
+                </div>
+            </div>
+            <div class="description">
+                <h5>Blocking Call</h5>
+                <p>This is an example of non-chunked loop, what blocks JavaScript, so that every animation code driven will
+                    be blocked</p>
+                <p>Please note, that executing this code will freeze your browser.</p>
             </div>
         </div>
 
         <div class="demo-case" id="demo-async">
-            <pre><code class="language-js"></code></pre>
-            <div class="demo-button-container">
-                <p></p>
-                <button class="button-primary">Execute Chunked</button>
+            <div>
+                <pre><code class="language-js"></code></pre>
+                <div class="demo-button-container">
+                    <p></p>
+                    <button class="button-primary">Execute</button>
+                </div>
             </div>
-            
+
+            <div class="description">
+                <h5>Simple Chunking</h5>
+                <p>This case shows how to adopt a standard for-loop to the chunked-call implementation</p>
+                <p>The chunked-call expects to provide a task as the first parameter, and this function has to return either
+                    true to proceed, or false to stop</p>
+                <p>This will let the lib to decide whether continue calculation in this time frame, or wait for next frame.
+                    This method is significantly slower than the original code.</p>
+            </div>
+
         </div>
 
         <div class="demo-case" id="demo-async-buckets">
-            <pre><code class="language-js"></code></pre>
-            <div class="demo-button-container">
-                <p></p>
-                <button class="button-primary">Execute Grouped Chunks</button>
+            <div>
+                <pre><code class="language-js"></code></pre>
+                <div class="demo-button-container">
+                    <p></p>
+                    <button class="button-primary">Execute</button>
+                </div>
+            </div>
+
+            <div class="description">
+                <h5>Group Chunking</h5>
+                <p>Extended version, that groups loop iteration to groups with defined size</p>
+                <p>This implementation is much faster than simple chunking, as it doesn't waste time on callback on each iteration.</p>
+                <p>Downside is that it requires manual probing for groups size.</p>
+            </div>
+        </div>
+        <div class="demo-case" id="demo-async-adaptive">
+            <div>
+                <pre><code class="language-js"></code></pre>
+                <div class="demo-button-container">
+                    <p></p>
+                    <button class="button-primary">Execute</button>
+                </div>
+            </div>
+
+            <div class="description">
+                <h5>Adaptive Chunking</h5>
+                <p>Dynamic version of Grouped Chunks, that adjust size of group according to time spend on last operation.</p>
+                <p>It requires to add extra sanity checks (like minimum group size) in case that an external factor takes CPU power.</p>
+                <p>Main advantage is that it can adopt (to some extend) to external factors, and limit operation in order to provide stable FPS.</p>
+                
             </div>
         </div>
     </div>
-    <footer>Crated by <a href="https://github.com/trzecieu/">@trzecieu</a>. sources: <a href="https://github.com/trzecieu/chunked-call/tree/gh-pages">@GitHub</a></footer>
+    <footer>Crated by
+        <a href="https://github.com/trzecieu/">@trzecieu</a>. sources:
+        <a href="https://github.com/trzecieu/chunked-call/tree/gh-pages">@GitHub</a>
+    </footer>
     <script src="js/bundle.js"></script>
     <script src="js/prism.js"></script>
 </body>

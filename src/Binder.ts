@@ -4,13 +4,13 @@ export class Binder {
     lock() {
         this._buttons.forEach((b) => {
             b.style.opacity = "0.4";
-            b.disabled = true;
+            // b.disabled = true;
         });
     }
     unlock() {
         this._buttons.forEach((b) => {
             b.style.opacity = "1.0";
-            b.disabled = false;
+            // b.disabled = false;
         });
     }
     bind(selector:string, task:Function) {
@@ -29,13 +29,13 @@ export class Binder {
                     const start = Date.now();
                     
                     const updateLabelHandler = setInterval(() => {
-                        label.innerHTML = "Execution time: " + (Date.now() - start) + "ms";
+                        label.innerHTML = "Execution time: " + (((Date.now() - start)/10)|0)/100 + "s";
                     }, 10);
                     
 
-                    task(() => {
+                    task((result) => {
                         clearInterval(updateLabelHandler);
-                        label.innerHTML = "Finished in: " + (Date.now() - start) + "ms";
+                        label.innerHTML = "Finished in: " + (((Date.now() - start)/10)|0)/100 + "s";
                         this.unlock();
                     });
                 }, 0);
@@ -51,7 +51,7 @@ function function_source(code) {
     let lines = code.split("\n");
     lines = lines.slice(1, -1);
 
-    let r = /^(\s+)\w+/gm
+    let r = /^(\s+)\S+/gm
     let ret = r.exec(lines[0]);
     if (ret) {
         let trim = ret[1].length;
