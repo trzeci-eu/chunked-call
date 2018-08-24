@@ -24,16 +24,18 @@
                 <h3>
                     <a href="https://www.npmjs.com/package/chunked-call">chunked-call</a>
                 </h3>
-                <p>A small library what let's you to split blocking loop operations over chunks, so that you can keep UI responsive.
-                    <br/>Please try to execute the same code in different way and
-                    <strong>observe animation above</strong>.
-                </p>
+
             </div>
         </header>
 
+        <div class="tile">
+            <h5>Shortly</h5>
+            <p>This is a small library that let's you to split blocking loop operations over chunks, so that you can keep UI responsive.<br/>Please try to execute the same code in different way and <strong>observe animation above</strong>.
+            </p>
+        </div>
 
-        <div class="demo-case" id="demo-sync">
-            <div>
+        <div class="demo-case tile" id="demo-sync">
+            <div class="code">
                 <pre><code class="language-js"></code></pre>
                 <div class="demo-button-container">
                     <p></p>
@@ -42,21 +44,20 @@
             </div>
             <div class="description">
                 <h5>Blocking Call</h5>
-                <p>This is an example of non-chunked loop, what blocks JavaScript, so that every animation code driven will
-                    be blocked</p>
+                <p>This is an example of non-chunked loop that blocks JavaScript, so that every animation code driven will be
+                    blocked</p>
                 <p>Please note, that executing this code will freeze your browser.</p>
             </div>
         </div>
 
-        <div class="demo-case" id="demo-async">
-            <div>
+        <div class="demo-case tile" id="demo-async">
+            <div class="code">
                 <pre><code class="language-js"></code></pre>
                 <div class="demo-button-container">
                     <p></p>
                     <button class="button-primary">Execute</button>
                 </div>
             </div>
-
             <div class="description">
                 <h5>Simple Chunking</h5>
                 <p>This case shows how to adopt a standard for-loop to the chunked-call implementation</p>
@@ -65,46 +66,67 @@
                 <p>This will let the lib to decide whether continue calculation in this time frame, or wait for next frame.
                     This method is significantly slower than the original code.</p>
             </div>
-
         </div>
 
-        <div class="demo-case" id="demo-async-buckets">
-            <div>
+        <div class="demo-case tile" id="demo-async-buckets">
+            <div class="code">
                 <pre><code class="language-js"></code></pre>
                 <div class="demo-button-container">
                     <p></p>
                     <button class="button-primary">Execute</button>
                 </div>
             </div>
-
             <div class="description">
-                <h5>Group Chunking</h5>
-                <p>Extended version, that groups loop iteration to groups with defined size</p>
-                <p>This implementation is much faster than simple chunking, as it doesn't waste time on callback on each iteration.</p>
+                <h5>Grouped Chunking</h5>
+                <p>Extended version that groups loop iteration</p>
+                <p>This implementation performs faster than the simple chunking as it doesn't waste time on callback on each iteration.</p>
                 <p>Downside is that it requires manual probing for groups size.</p>
             </div>
         </div>
-        <div class="demo-case" id="demo-async-adaptive">
-            <div>
+
+        <div class="demo-case tile" id="demo-async-adaptive">
+            <div class="code">
                 <pre><code class="language-js"></code></pre>
                 <div class="demo-button-container">
                     <p></p>
                     <button class="button-primary">Execute</button>
                 </div>
             </div>
-
             <div class="description">
                 <h5>Adaptive Chunking</h5>
-                <p>Dynamic version of Grouped Chunks, that adjust size of group according to time spend on last operation.</p>
+                <p>Dynamic version of Grouped Chunks that adjusts the size of group according to time spend on last operation.</p>
                 <p>It requires to add extra sanity checks (like minimum group size) in case that an external factor takes CPU power.</p>
-                <p>Main advantage is that it can adopt (to some extend) to external factors, and limit operation in order to provide stable FPS.</p>
-                
+                <p>Main advantage is that it can adopt (to some extend) to external factors and limit operation in order to provide stable FPS.</p>
             </div>
         </div>
+
+        <div class="tile">
+            <h5>API</h5>
+            <div class="code">
+                <pre><code class="language-js">// @task: A callback to function that executes until it returns false. 
+// @callback: Called when execution is finished.
+// @limitMs: Once execution time exceeded given time, it waits to a next frame
+// @returns: An ID of chunked call execution
+function setChunkedCall(task, callback, limitMs);
+
+// @returns: A Promise thats wraps setChunkedCall
+function setChunkedCallPromise(task, limitMs);
+
+// Terminates execution of ongoing chunked call
+// @id: Identifier of chunked call
+// @returns: True if an execution has been killed successfully, false otherwise.
+function killChunkedCall(id);
+                </code></pre>
+            </div>
+            
+        </div>
+
     </div>
+
     <footer>Crated by
-        <a href="https://github.com/trzecieu/">@trzecieu</a>. sources:
-        <a href="https://github.com/trzecieu/chunked-call/tree/gh-pages">@GitHub</a>
+        <a href="https://github.com/trzecieu/">@trzecieu</a>. GitHub:
+        <a href="https://github.com/trzecieu/chunked-call/tree/gh-pages">this page</a>, 
+        <a href="https://github.com/trzecieu/chunked-call/tree/gh-pages">chunked-call</a>
     </footer>
     <script src="js/bundle.js"></script>
     <script src="js/prism.js"></script>

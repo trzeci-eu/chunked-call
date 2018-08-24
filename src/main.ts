@@ -61,7 +61,7 @@ function executeChunkedBuckets(done) {
 }
 
 function executeChunkedAdaptive(done) {
-    const timeBudgetMs = 30;
+    const budgetMs = 30;
     let groupSize = 1500;
     let result = 1;
     setChunkedCall((() => {
@@ -69,7 +69,7 @@ function executeChunkedAdaptive(done) {
             let lastTime = Date.now();
             return () => {
                 let currentTime = Date.now();
-                groupSize *= timeBudgetMs /  clamp(currentTime - lastTime, 5, 60);
+                groupSize *= budgetMs /  clamp(currentTime - lastTime, 5, 60);
                 groupSize = Math.max(200, groupSize); 
                 lastTime = currentTime;
 
